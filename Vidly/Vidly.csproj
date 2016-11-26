@@ -203,10 +203,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611261451524_initialModel.cs" />
+    <Compile Include="Migrations\201611261451524_initialModel.Designer.cs">
+      <DependentUpon>201611261451524_initialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611261713386_AddIsSubscribedToCustomer.cs" />
+    <Compile Include="Migrations\201611261713386_AddIsSubscribedToCustomer.Designer.cs">
+      <DependentUpon>201611261713386_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611261727015_AddMemberShipType.cs" />
+    <Compile Include="Migrations\201611261727015_AddMemberShipType.Designer.cs">
+      <DependentUpon>201611261727015_AddMemberShipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611261727587_PopulateMemberShipTypes.cs" />
+    <Compile Include="Migrations\201611261727587_PopulateMemberShipTypes.Designer.cs">
+      <DependentUpon>201611261727587_PopulateMemberShipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611261732077_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\201611261732077_ApplyAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>201611261732077_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -289,6 +311,23 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611261451524_initialModel.resx">
+      <DependentUpon>201611261451524_initialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261713386_AddIsSubscribedToCustomer.resx">
+      <DependentUpon>201611261713386_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261727015_AddMemberShipType.resx">
+      <DependentUpon>201611261727015_AddMemberShipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261727587_PopulateMemberShipTypes.resx">
+      <DependentUpon>201611261727587_PopulateMemberShipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261732077_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>201611261732077_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

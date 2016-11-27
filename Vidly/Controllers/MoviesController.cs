@@ -31,14 +31,57 @@ namespace Vidly.Controllers
             return View(movies);   
          }
 
-        public ActionResult Details(int id)
+        public ActionResult Edit(int id)
         {
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movie == null)
                 return HttpNotFound();
 
-            return View(movie);
+            var viewModel = new MovieAddViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult New()
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new MovieAddViewModel
+            {
+                Genres = genres
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0) // new movie 
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else// existing movie
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+
+                //TryUpdateModel(customerInDb); // Another approach, can open up a number of issues, security holes...
+
+                //Instead of these 4 lines you can use a library like AutoMapper...
+                //Mapper.Map(customer, customerInDb);
+                movieInDb.Name = movie.Name;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.NumberInStock = movie.NumberInStock;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
         }
     }
 }

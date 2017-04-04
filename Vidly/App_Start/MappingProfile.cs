@@ -17,6 +17,7 @@ namespace Vidly.App_Start
             Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore());
 
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
 
             Mapper.CreateMap<Movie, MovieDto>();
             //we add ForMember becouse when we call Update (PUT) we can't update the id

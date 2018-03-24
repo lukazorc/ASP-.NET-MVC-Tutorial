@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+//using System.Runtime.Caching;
 
 namespace Vidly.Controllers
 {
@@ -62,9 +60,9 @@ namespace Vidly.Controllers
                 //Instead of these 4 lines you can use a library like AutoMapper...
                 //Mapper.Map(customer, customerInDb);
                 customerInDb.Name = customer.Name;
-                customerInDb.Birthdate= customer.Birthdate;
-                customerInDb.MemberShipTypeId= customer.MemberShipTypeId;
-                customerInDb.IsSubscribedToNewsletter= customer.IsSubscribedToNewsletter;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MemberShipTypeId = customer.MemberShipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
             }
 
             _context.SaveChanges();
@@ -72,9 +70,17 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customers");
         }
 
-        
+
         public ActionResult Index()
         {
+            // Only as example of Data caching
+            //if(MemoryCache.Default["Genres"] == null)
+            //{
+            //    MemoryCache.Default["Genres"] = _context.Genres.ToList();
+            //}
+
+            //var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
+
             return View();
         }
 
@@ -100,7 +106,7 @@ namespace Vidly.Controllers
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
-            return View("CustomerForm", viewModel); 
+            return View("CustomerForm", viewModel);
         }
     }
 }
